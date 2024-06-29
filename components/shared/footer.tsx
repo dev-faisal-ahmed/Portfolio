@@ -1,8 +1,9 @@
 'use client';
 
-import Link from 'next/link';
 import { socialLinks } from '@/app/(home)/_data/social-links';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+// import { socialLinks } from '@/app/(main)/(home)/_data/social-links';
 
 export function Footer() {
   const pathName = usePathname();

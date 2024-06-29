@@ -4,7 +4,7 @@ import { SkillCard } from './skill.card';
 
 export function Skills() {
   return (
-    <div className="mt-16d">
+    <div className="mt-16">
       <Heading>My Skills.</Heading>
       <h3 className="mt-12 text-xl font-semibold">Front End.</h3>
       <div className="mt-6 grid grid-cols-4 gap-6">

@@ -14,7 +14,7 @@ export function AboutMe() {
           and the skills I bring to the table.
         </p>
       </div>
-      <div className="w-full max-w-[350px] rounded-3xl bg-black/20">
+      <div className="w-full max-w-[400px] rounded-3xl bg-black/20">
         <Image
           style={{}}
           className="rounded-3xl"

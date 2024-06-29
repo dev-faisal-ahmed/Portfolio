@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import { JetBrains_Mono } from 'next/font/google';
-import './globals.css';
-import { Navbar } from '@/components/shared/navbar';
+import { PageTransition } from '@/components/shared/page-transition';
 import { cn } from '@/lib/utils';
+import './globals.css';
+import { StairTransition } from '@/components/shared/page-transition/stair-transition';
+import { Navbar } from '@/components/shared/navbar';
 import { Footer } from '@/components/shared/footer';
 
 const font = JetBrains_Mono({
@@ -21,9 +23,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn(font.className, 'flex min-h-screen flex-col')}>
+      <body className={font.className}>
         <Navbar />
-        {children}
+        <StairTransition />
+        <PageTransition>{children}</PageTransition>
         <Footer />
       </body>
     </html>
