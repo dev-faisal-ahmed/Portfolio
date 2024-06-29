@@ -8,7 +8,7 @@ export function Footer() {
   const pathName = usePathname();
 
   return (
-    <footer className="flex flex-col items-center bg-black py-4 text-sm">
+    <footer className="mt-auto flex flex-col items-center bg-black py-4 text-sm">
       {pathName !== '/' && (
         <div className="mx-auto my-6 flex w-fit items-center gap-6 lg:mx-0">
           {socialLinks.map(({ icon, url }) => (
