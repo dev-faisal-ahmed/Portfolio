@@ -18,27 +18,28 @@ export function NavMenu() {
         </Sheet.SheetTrigger>
         <Sheet.SheetContent
           side={'left'}
-          className="border-neutral-500 min-h-[100dvh] flex flex-col"
+          className="flex min-h-[100dvh] flex-col border-neutral-500"
         >
           <Link className="text-2xl" href={'/'}>
             Faisal<span className="text-primary">.</span>{' '}
           </Link>
-          <div className="flex flex-col mt-6 gap-3">
+          <div className="mt-6 flex flex-col gap-3">
             {navLinks.map(({ title, url }) => (
-              <Link
-                className={cn(
-                  'text-lg border-b pb-1 px-2',
-                  pathName === url ? 'border-primary' : 'border-transparent'
-                )}
+              <div
                 key={url}
-                href={url}
+                className={cn(
+                  'border-b px-2 pb-1 text-lg',
+                  pathName === url ? 'border-primary' : 'border-transparent',
+                )}
               >
-                {title}
-              </Link>
+                <Link href={url}>
+                  <Sheet.SheetClose>{title}</Sheet.SheetClose>
+                </Link>
+              </div>
             ))}
           </div>
           <Link className="mt-auto" href={'/contact'}>
-            <Button className="font-semibold w-full">Contact Me</Button>
+            <Button className="w-full font-semibold">Contact Me</Button>
           </Link>
         </Sheet.SheetContent>
       </Sheet.Sheet>

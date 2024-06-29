@@ -38,15 +38,37 @@
 
 @layer base {
   * {
-    @apply border-border text-white;
+    @apply border-border;
   }
   body {
-    @apply bg-background/90;
+    @apply bg-background/90 text-white;
   }
 }
 
 @layer components {
   .container {
-    @apply max-w-[1280px] mx-auto w-full;
+    @apply mx-auto w-full max-w-[1280px];
   }
+}
+
+.hero-img {
+  box-shadow: 0px 0px 200px 20px #159763;
+}
+
+.hero-img:hover {
+  box-shadow: 0px 0px 20px 10px #159763;
+}
+
+*::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+* ::-webkit-scrollbar-track {
+  background: #111;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #666;
+  border-radius: 20px;
 }
