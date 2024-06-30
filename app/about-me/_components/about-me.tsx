@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export function AboutMe() {
   return (
-    <div className="flex items-center">
+    <div className="flex flex-col-reverse items-center gap-10 md:flex-row">
       <div className="w-full text-center lg:text-left">
         <Heading>About Me.</Heading>
         <p className="mt-5 text-justify text-sm text-white/60 md:text-base lg:w-[80%]">

@@ -20,15 +20,20 @@ export function NavMenu() {
           side={'left'}
           className="flex min-h-[100dvh] flex-col border-neutral-500"
         >
-          <Link className="text-2xl" href={'/'}>
-            Faisal<span className="text-primary">.</span>{' '}
-          </Link>
+          <Sheet.SheetTitle>
+            <Link className="text-2xl text-white" href={'/'}>
+              <Sheet.SheetClose>
+                Faisal<span className="text-primary">.</span>{' '}
+              </Sheet.SheetClose>
+            </Link>
+          </Sheet.SheetTitle>
+
           <div className="mt-6 flex flex-col gap-3">
             {navLinks.map(({ title, url }) => (
               <div
                 key={url}
                 className={cn(
-                  'border-b px-2 pb-1 text-lg',
+                  'border-b px-2 pb-1',
                   pathName === url ? 'border-primary' : 'border-transparent',
                 )}
               >

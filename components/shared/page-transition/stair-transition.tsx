@@ -16,7 +16,7 @@ const stairAnimation = {
 };
 
 const reverseIndex = (index: number) => {
-  const totalSteps = 12;
+  const totalSteps = 15;
   return totalSteps - index - 1;
 };
 
@@ -26,7 +26,7 @@ export function StairTransition() {
     <AnimatePresence mode="wait">
       <div key={pathName}>
         <div className="pointer-events-none fixed left-0 right-0 top-0 z-50 flex h-screen w-screen">
-          {[...Array(12)].map((_, index) => (
+          {[...Array(15)].map((_, index) => (
             <motion.div
               key={index}
               variants={stairAnimation}
@@ -36,7 +36,7 @@ export function StairTransition() {
               transition={{
                 duration: 0.3,
                 ease: 'easeInOut',
-                delay: reverseIndex(index) * 0.04,
+                delay: reverseIndex(index) * 0.03,
               }}
               className="relative h-full w-full bg-neutral-100"
             />

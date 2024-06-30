@@ -1,15 +1,16 @@
 import { IconPicker } from '@/components/shared/icon-picker';
+import { TSkillStatus } from '@/lib/types';
 import { cn } from '@/lib/utils';
 
 type TProps = {
   icon: string;
   name: string;
-  status: string;
+  status: TSkillStatus;
 };
 
 export function SkillCard({ icon, name, status }: TProps) {
   return (
-    <div className="cursor-pointer rounded-2xl bg-neutral-800 p-6 text-center">
+    <div className="cursor-pointer rounded-2xl bg-neutral-800 p-6 text-center transition hover:shadow-[0_0_90px_5px_#159763]">
       <div className="mx-auto mb-6 w-fit text-6xl">
         <IconPicker iconName={icon} />
       </div>

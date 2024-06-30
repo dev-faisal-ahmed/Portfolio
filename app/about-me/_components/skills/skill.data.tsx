@@ -1,12 +1,4 @@
-type TSkill = {
-  name: string;
-  type: TSkillType;
-  status: TSkillStatus;
-  icon: string;
-};
-
-type TSkillType = 'FRONT_END' | 'BACK_END' | 'TOOLS' | 'OTHERS';
-type TSkillStatus = 'EXPERT' | 'INTERMEDIATE' | 'FAMILIAR';
+import { TSkill } from '@/lib/types';
 
 export const frontEndSkills: TSkill[] = [
   {
