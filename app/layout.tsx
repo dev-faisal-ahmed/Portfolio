@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 import { JetBrains_Mono } from 'next/font/google';
-import { PageTransition } from '@/components/shared/page-transition';
+import { PageTransition } from '@/shared/page-transition';
 import { cn } from '@/lib/utils';
+import { Navbar } from '@/shared/navbar';
+import { Footer } from '@/shared/footer';
+import { StairTransition } from '@/shared/page-transition/stair-transition';
 import './globals.css';
-import { StairTransition } from '@/components/shared/page-transition/stair-transition';
-import { Navbar } from '@/components/shared/navbar';
-import { Footer } from '@/components/shared/footer';
 
 const font = JetBrains_Mono({
   subsets: ['latin'],
@@ -23,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={font.className}>
+      <body className={cn(font.className, 'flex min-h-screen flex-col')}>
         <Navbar />
         <StairTransition />
         <PageTransition>{children}</PageTransition>

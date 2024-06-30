@@ -1,4 +1,4 @@
-import { Heading } from '@/components/shared/heading';
+import { Heading } from '@/shared/heading';
 import { backEndSkills, frontEndSkills, tools } from './skill.data';
 import { SkillGroup } from './skill-group';
 

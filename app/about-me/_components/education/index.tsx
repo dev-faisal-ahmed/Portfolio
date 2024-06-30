@@ -1,4 +1,4 @@
-import { Heading } from '@/components/shared/heading';
+import { Heading } from '@/shared/heading';
 import { educations } from './education.data';
 
 export function Education() {

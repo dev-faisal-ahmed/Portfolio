@@ -1,4 +1,4 @@
-import { Heading } from '@/components/shared/heading';
+import { Heading } from '@/shared/heading';
 import Image from 'next/image';
 
 export function AboutMe() {

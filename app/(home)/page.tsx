@@ -1,9 +1,8 @@
-import Link from 'next/link';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { Typewriter } from './_components/typewriter';
 import { ArrowBigDownDashIcon } from 'lucide-react';
-import { socialLinks } from './_data/social-links';
+import { SocialIcons } from '@/components/shared/social-icons';
 
 export default function HomePage() {
   return (
@@ -27,18 +26,8 @@ export default function HomePage() {
           and the skills I bring to the table.
         </p>
 
-        <div className="mx-auto my-6 flex w-fit items-center gap-6 lg:mx-0">
-          {socialLinks.map(({ icon, url }) => (
-            <Link
-              className="hover:bg-primary/110 rounded-full p-2 transition hover:shadow-[0_0_30px_10px_#159763]"
-              key={url}
-              href={url}
-              target="_blank"
-            >
-              {icon}
-            </Link>
-          ))}
-        </div>
+        <SocialIcons />
+
         <a
           className={cn(
             'rounded-full bg-primary px-6 text-black',

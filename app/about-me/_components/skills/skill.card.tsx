@@ -1,4 +1,4 @@
-import { IconPicker } from '@/components/shared/icon-picker';
+import { IconPicker } from '@/shared/icon-picker';
 import { TSkillStatus } from '@/lib/types';
 import { cn } from '@/lib/utils';
 
