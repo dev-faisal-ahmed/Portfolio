@@ -1,7 +1,9 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 import { Loader } from './components/shared/loader';
-import { RootLayout } from '@/pages/layout';
+import { RootLayout } from './layout/root-layout';
+import { MainLayout } from './layout/main-layout';
+// import { RootLayout } from '@/pages/layout';
 
 const LoginPage = lazy(() => import('@/pages/login'));
 
@@ -10,6 +12,11 @@ const router = createBrowserRouter([
     path: '/',
     element: <RootLayout />,
     children: [
+      {
+        path: '/',
+        element: <MainLayout />,
+        children: [{}],
+      },
       {
         path: '/login',
         element: <LoginPage />,
