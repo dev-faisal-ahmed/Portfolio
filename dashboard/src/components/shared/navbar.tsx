@@ -24,7 +24,7 @@ export function Navbar() {
             </Link>
           ))}
         </div>
-        <UserIcon name="Faisal" />
+        <UserIcon />
       </div>
     </nav>
   );

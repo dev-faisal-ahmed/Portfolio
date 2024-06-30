@@ -1,13 +1,13 @@
 import * as DropDown from '@/components/ui/dropdown-menu';
 import { Button } from '../ui/button';
-
-type TProps = {
-  name: string;
-};
+import { getUser } from '@/utils/helper';
 
 const size = 50;
 
-export function UserIcon({ name }: TProps) {
+export function UserIcon() {
+  const user = getUser();
+  const { name } = user!;
+
   const onLogout = () => {
     localStorage.removeItem('token');
     window.location.reload();
