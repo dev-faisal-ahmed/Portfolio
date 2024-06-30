@@ -14,7 +14,7 @@ export function Education() {
             >
               <h3 className="text-primary">{year}</h3>
               <h4 className="mb-1 mt-3 text-lg font-semibold">{degreeName}</h4>
-              <p className="mb-3 text-xs text-neutral-400">{institution}</p>
+              <p className="mb-3 text-xs text-white/60">{institution}</p>
               <h2 className="mt-auto">
                 CGPA / GPA :{' '}
                 <span className="text-primary">{obtainedCgpa}</span> of{' '}
