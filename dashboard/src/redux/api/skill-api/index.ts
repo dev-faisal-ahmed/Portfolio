@@ -5,7 +5,7 @@ import { TAddSkillPayload, TUpdateSKillPayload } from './types';
 const skillUrl = 'skill';
 const skillsUrl = 'skills';
 
-export const skillApi = baseApi.injectEndpoints({
+const skillApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     // **** Skill **** \\
 

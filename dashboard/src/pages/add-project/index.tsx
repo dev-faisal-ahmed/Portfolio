@@ -2,24 +2,58 @@
 import { CustomInput } from '@/components/shared/form/custom-input';
 import { MultiSelect } from '@/components/shared/form/multi-select';
 import { RichTextEditor } from '@/components/shared/form/rich-text-editor';
+import { useAddProjectMutation } from '@/redux/api/project-api';
 import { Button } from '@/components/ui/button';
 import { FormEvent, useState } from 'react';
-import { cn } from '@/lib/utils';
 import { toast } from 'sonner';
+import { cn } from '@/lib/utils';
 
 export default function AddProjectPage() {
   const [description, setDescription] = useState('');
   const [technologies, setTechnologies] = useState<string[]>([]);
+  const [addProject] = useAddProjectMutation();
 
   // handlers
   const onDescriptionChange = (content: string) => setDescription(content);
 
   const onAddProject = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    const form = event.target as HTMLFormElement & {
+      name: { value: string };
+      coverUrl: { value: string };
+      client: { value: string };
+      server: { value: string };
+      live: { value: string };
+      priority: { value: string };
+    };
+
+    const name = form.name.value.trim();
+    const coverUrl = form.coverUrl.value.trim();
+    const client = form.client.value.trim();
+    const server = form.server.value.trim();
+    const live = form.live.value.trim();
+    const priority = form.priority.value;
+
     const toastId = toast.loading('Adding New Project');
     try {
       if (!description) throw new Error('Description is required');
       if (!technologies.length) throw new Error('Technologies is required');
+
+      const response = await addProject({
+        name,
+        coverUrl,
+        description,
+        links: { client, server, live },
+        priority: Number(priority),
+        technologies,
+      }).unwrap();
+
+      if (!response.ok) throw Error(response.message);
+      toast.success(response.message, { id: toastId });
+      form.reset();
+      setDescription('');
+      setTechnologies([]);
     } catch (err: any) {
       toast.error(err.message, { id: toastId });
     }
@@ -78,8 +112,16 @@ export default function AddProjectPage() {
 
           <CustomInput
             label="Live Site Url"
-            name="server"
+            name="live"
             placeholder="Enter Live Side Url"
+            required
+          />
+
+          <CustomInput
+            label="Priority"
+            name="priority"
+            placeholder="Enter Project Priority"
+            type="number"
             required
           />
           <Button>Add Project</Button>

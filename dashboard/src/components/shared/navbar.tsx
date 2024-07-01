@@ -6,7 +6,7 @@ import { UserIcon } from './user-icon';
 export function Navbar() {
   const { pathname } = useLocation();
   return (
-    <nav className="sticky top-0 border-neutral-400 bg-white py-3 shadow">
+    <nav className="sticky top-0 z-30 border-neutral-400 bg-white py-3 shadow">
       <div className="container flex items-center justify-between gap-6">
         <Link to={'/'} className="text-3xl font-semibold">
           Faisal.
