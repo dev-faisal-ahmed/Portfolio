@@ -61,7 +61,7 @@ export function ProjectTable() {
                       <Link to={`update-project/${project._id}`}>
                         <Button variant={'secondary'}>Update</Button>
                       </Link>
-                      <Link to={`project/${project._id}`}>
+                      <Link to={`/project/${project._id}`}>
                         <Button variant={'outline'}>Details</Button>
                       </Link>
                       <DeleteProject projectId={project._id} />
