@@ -3,9 +3,11 @@ import { Suspense, lazy } from 'react';
 import { Loader } from './components/shared/loader';
 import { RootLayout } from './layout/root-layout';
 import { MainLayout } from './layout/main-layout';
+
 // import { RootLayout } from '@/pages/layout';
 
 const LoginPage = lazy(() => import('@/pages/login'));
+const HomePage = lazy(() => import('@/pages/home'));
 
 const router = createBrowserRouter([
   {
@@ -15,7 +17,12 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <MainLayout />,
-        children: [{}],
+        children: [
+          {
+            path: '/',
+            element: <HomePage />,
+          },
+        ],
       },
       {
         path: '/login',

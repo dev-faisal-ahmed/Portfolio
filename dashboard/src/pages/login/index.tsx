@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { CustomInput } from '@/components/shared/custom-input';
+import { CustomInput } from '@/components/shared/form/custom-input';
 import { Button } from '@/components/ui/button';
 import { apiUrl } from '@/data';
 import { fetchOption, setToken } from '@/utils/helper';

@@ -1,6 +1,6 @@
 import { Navbar } from '@/components/shared/navbar';
 import { getUser } from '@/utils/helper';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 
 export function MainLayout() {
   const user = getUser();
@@ -10,6 +10,7 @@ export function MainLayout() {
   return (
     <>
       <Navbar />
+      <Outlet />
     </>
   );
 }

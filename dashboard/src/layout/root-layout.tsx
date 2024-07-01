@@ -5,7 +5,7 @@ import { Toaster } from 'sonner';
 
 export function RootLayout() {
   return (
-    <main className="min-h-screen bg-primary-50">
+    <main className="min-h-screen bg-primary-50 text-sm">
       <Provider store={store}>
         <Toaster richColors />
         <Outlet />
