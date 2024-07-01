@@ -1,19 +1,19 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as Dialog from '@/components/ui/dialog';
+import { useUpdateSkillMutation } from '@/redux/api/skill-api';
 import { CustomInput } from '@/components/shared/form/custom-input';
 import { CustomSelect } from '@/components/shared/form/custom-select';
 import { Button } from '@/components/ui/button';
 import { skillStatues, skillTypes } from '@/data/constants';
-import { useAddSkillMutation } from '@/redux/api/skill-api';
-import { TSkillStatus, TSkillType } from '@/utils/types';
+import { TSkill, TSkillStatus, TSkillType } from '@/utils/types';
 import { FormEvent, useState } from 'react';
 import { toast } from 'sonner';
 
-export function AddSkill() {
-  const [type, setType] = useState<string>();
-  const [status, setStatus] = useState<string>();
+export function UpdateSkill({ _id, icon, name, status, type }: TSkill) {
+  const [newType, setNewType] = useState<string>(type);
+  const [newStatus, setNewStatus] = useState<string>(status);
   const [isOpen, setIsOpen] = useState(false);
-  const [addSkill] = useAddSkillMutation();
+  const [updateSkill] = useUpdateSkillMutation();
 
   const onAddSkill = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -25,19 +25,23 @@ export function AddSkill() {
     const name = form.name.value;
     const icon = form.icon.value;
 
+    console.log({ name, newType, newStatus, icon });
+
     const toastId = toast.loading('Adding skills');
 
     try {
-      if (!type) throw new Error('Skill Type is required');
-      if (!status) throw new Error('Skill Status is required');
-      const response = await addSkill({
-        name,
-        type: type as TSkillType,
-        status: status as TSkillStatus,
-        icon,
+      if (!newType) throw new Error('Skill Type is required');
+      if (!newStatus) throw new Error('Skill Status is required');
+      const response = await updateSkill({
+        skillId: _id,
+        data: {
+          name,
+          type: newType as TSkillType,
+          status: newStatus as TSkillStatus,
+          icon,
+        },
       }).unwrap();
 
-      console.log(response);
       if (!response.ok) throw new Error(response.message);
       toast.success(response.message, { id: toastId });
 
@@ -51,7 +55,7 @@ export function AddSkill() {
   return (
     <Dialog.Dialog open={isOpen} onOpenChange={setIsOpen}>
       <Dialog.DialogTrigger asChild>
-        <Button>Add Skill</Button>
+        <Button variant={'secondary'}>Update Skill</Button>
       </Dialog.DialogTrigger>
       <Dialog.DialogContent className="max-h-[80vh] overflow-y-auto">
         <Dialog.DialogHeader>
@@ -60,6 +64,7 @@ export function AddSkill() {
         <form onSubmit={onAddSkill} className="flex flex-col gap-3">
           <CustomInput
             name="name"
+            defaultValue={name}
             placeholder="Name of the skill"
             label="Skill Name"
             required
@@ -67,21 +72,22 @@ export function AddSkill() {
           <CustomSelect
             label="Skill Type"
             placeholder="Select Skill Type"
-            value={type}
-            onValueChange={(type) => setType(type)}
+            value={newType}
+            onValueChange={(type) => setNewType(type)}
             options={skillTypes}
             required
           />
           <CustomSelect
             label="Status"
             placeholder="Select Skill Status"
-            value={status}
-            onValueChange={(status) => setStatus(status)}
+            value={newStatus}
+            onValueChange={(status) => setNewStatus(status)}
             options={skillStatues}
             required
           />
           <CustomInput
             name="icon"
+            defaultValue={icon}
             placeholder="Input Icon Name From React-Icons"
             label="Icon"
             required

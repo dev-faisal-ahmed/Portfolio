@@ -6,6 +6,7 @@ type TProps = {
   placeholder: string;
   type?: 'text' | 'number' | 'password';
   required?: boolean;
+  defaultValue?: string;
 };
 
 export function CustomInput({
@@ -14,6 +15,7 @@ export function CustomInput({
   placeholder,
   type = 'text',
   required,
+  defaultValue,
 }: TProps) {
   return (
     <div className="space-y-1">
@@ -21,6 +23,7 @@ export function CustomInput({
         {label}
       </label>
       <Input
+        defaultValue={defaultValue}
         name={name}
         id={name}
         placeholder={placeholder}

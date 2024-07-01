@@ -1,6 +1,6 @@
 import { ServerResponseType, TSkill } from '@/utils/types';
 import { baseApi } from '..';
-import { TAddSkillPayload } from './types';
+import { TAddSkillPayload, TUpdateSKillPayload } from './types';
 
 const skillUrl = 'skill';
 const skillsUrl = 'skills';
@@ -8,6 +8,7 @@ const skillsUrl = 'skills';
 export const skillApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     // **** Skill **** \\
+
     // add skill
     addSkill: builder.mutation<ServerResponseType<null>, TAddSkillPayload>({
       query: (payload) => ({
@@ -18,7 +19,21 @@ export const skillApi = baseApi.injectEndpoints({
       invalidatesTags: ['skills'],
     }),
 
+    // update skill
+    updateSkill: builder.mutation<
+      ServerResponseType<null>,
+      TUpdateSKillPayload
+    >({
+      query: ({ skillId, data }) => ({
+        url: `${skillUrl}/${skillId}`,
+        method: 'PATCH',
+        body: data,
+      }),
+      invalidatesTags: ['skills'],
+    }),
+
     // **** Skills **** \\
+
     // get skills
     getSkills: builder.query<ServerResponseType<TSkill[]>, null>({
       query: () => `${skillsUrl}`,
@@ -30,6 +45,7 @@ export const skillApi = baseApi.injectEndpoints({
 export const {
   // skill
   useAddSkillMutation,
+  useUpdateSkillMutation,
   // skills
   useGetSkillsQuery,
 } = skillApi;
