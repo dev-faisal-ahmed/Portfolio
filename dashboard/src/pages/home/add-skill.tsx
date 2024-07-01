@@ -12,6 +12,7 @@ import { toast } from 'sonner';
 export function AddSkill() {
   const [type, setType] = useState<string>();
   const [status, setStatus] = useState<string>();
+  const [isOpen, setIsOpen] = useState(false);
   const [addSkill] = useAddSkillMutation();
 
   const onAddSkill = async (event: FormEvent<HTMLFormElement>) => {
@@ -42,13 +43,14 @@ export function AddSkill() {
       toast.success(response.message, { id: toastId });
 
       form.reset();
+      setIsOpen(false);
     } catch (err: any) {
       toast.error(err?.message, { id: toastId });
     }
   };
 
   return (
-    <Dialog.Dialog>
+    <Dialog.Dialog open={isOpen} onOpenChange={setIsOpen}>
       <Dialog.DialogTrigger asChild>
         <Button>Add Skill</Button>
       </Dialog.DialogTrigger>

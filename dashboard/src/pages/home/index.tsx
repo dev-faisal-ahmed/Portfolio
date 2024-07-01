@@ -1,5 +1,6 @@
 import { Heading } from '@/components/shared/heading';
 import { AddSkill } from './add-skill';
+import { Skills } from './skills';
 
 export default function HomePage() {
   return (
@@ -8,6 +9,7 @@ export default function HomePage() {
         <Heading>Skills.</Heading>
         <AddSkill />
       </div>
+      <Skills />
     </section>
   );
 }

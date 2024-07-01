@@ -2,6 +2,7 @@ import { SendSuccessResponse } from '../../helpers';
 import { TryCatch } from '../../utils/try-catch';
 import { SkillService } from './services';
 
+// skill
 const AddSkill = TryCatch(async (req, res) => {
   const skill = await SkillService.AddSkill(req.body);
 
@@ -12,4 +13,15 @@ const AddSkill = TryCatch(async (req, res) => {
   });
 });
 
-export const SkillController = { AddSkill };
+//  skills
+const GetSkills = TryCatch(async (req, res) => {
+  const skills = await SkillService.GetSkills();
+
+  SendSuccessResponse(res, {
+    status: 200,
+    message: 'Skill retrieved successfully',
+    data: skills,
+  });
+});
+
+export const SkillController = { AddSkill, GetSkills };

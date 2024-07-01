@@ -13,3 +13,8 @@ SkillRouter.post(
   ValidationHandler(SkillValidation.AddSkill),
   SkillController.AddSkill
 );
+
+// skills router
+export const SkillsRouter = Router();
+
+SkillsRouter.get('/', AuthGuard, SkillController.GetSkills);

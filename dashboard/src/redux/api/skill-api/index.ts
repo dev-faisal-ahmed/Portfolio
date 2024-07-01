@@ -1,11 +1,13 @@
-import { ServerResponseType } from '@/utils/types';
+import { ServerResponseType, TSkill } from '@/utils/types';
 import { baseApi } from '..';
 import { TAddSkillPayload } from './types';
 
 const skillUrl = 'skill';
+const skillsUrl = 'skills';
 
 export const skillApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
+    // **** Skill **** \\
     // add skill
     addSkill: builder.mutation<ServerResponseType<null>, TAddSkillPayload>({
       query: (payload) => ({
@@ -15,7 +17,19 @@ export const skillApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ['skills'],
     }),
+
+    // **** Skills **** \\
+    // get skills
+    getSkills: builder.query<ServerResponseType<TSkill[]>, null>({
+      query: () => `${skillsUrl}`,
+      providesTags: ['skills'],
+    }),
   }),
 });
 
-export const { useAddSkillMutation } = skillApi;
+export const {
+  // skill
+  useAddSkillMutation,
+  // skills
+  useGetSkillsQuery,
+} = skillApi;
