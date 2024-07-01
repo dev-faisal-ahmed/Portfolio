@@ -4,9 +4,9 @@ import { ValidationHandler } from '../../middleware/validation.handler';
 import { ProjectValidation } from './validation';
 import { ProjectController } from './controller';
 
+//  Project Router
 export const ProjectRouter = Router();
 
-//  Project Router
 ProjectRouter.post(
   '/',
   AuthGuard,
@@ -15,6 +15,15 @@ ProjectRouter.post(
 );
 
 ProjectRouter.get('/:projectId', ProjectController.GetProjectDetails);
+
+ProjectRouter.patch(
+  '/:projectId',
+  AuthGuard,
+  ValidationHandler(ProjectValidation.UpdateProject),
+  ProjectController.UpdateProject
+);
+
+ProjectRouter.delete('/:projectId', AuthGuard, ProjectController.DeleteProject);
 
 // Projects Router
 export const ProjectsRouter = Router();

@@ -22,6 +22,29 @@ const GetProjectDetails = TryCatch(async (req, res) => {
   });
 });
 
+const UpdateProject = TryCatch(async (req, res) => {
+  const message = await ProjectService.UpdateProject(
+    req.params.projectId,
+    req.body
+  );
+
+  SendSuccessResponse(res, {
+    status: 200,
+    message: message,
+    data: null,
+  });
+});
+
+const DeleteProject = TryCatch(async (req, res) => {
+  const message = await ProjectService.DeleteProject(req.params.projectId);
+
+  SendSuccessResponse(res, {
+    status: 200,
+    message: message,
+    data: null,
+  });
+});
+
 const GetProjects = TryCatch(async (req, res) => {
   const projects = await ProjectService.GetProjects();
 
@@ -32,4 +55,13 @@ const GetProjects = TryCatch(async (req, res) => {
   });
 });
 
-export const ProjectController = { AddProject, GetProjectDetails, GetProjects };
+export const ProjectController = {
+  // project
+  AddProject,
+  GetProjectDetails,
+  UpdateProject,
+  DeleteProject,
+
+  // projects
+  GetProjects,
+};
