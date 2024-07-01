@@ -58,7 +58,7 @@ export function ProjectTable() {
                   <TD className="text-center">{project.priority}</TD>
                   <TD>
                     <div className="mx-auto flex w-fit items-center gap-4">
-                      <Link to={`update-project/${project._id}`}>
+                      <Link to={`/update-project/${project._id}`}>
                         <Button variant={'secondary'}>Update</Button>
                       </Link>
                       <Link to={`/project/${project._id}`}>

@@ -30,7 +30,7 @@ const projectApi = baseApi.injectEndpoints({
         method: 'PATCH',
         body: data,
       }),
-      invalidatesTags: ['projects'],
+      invalidatesTags: ['projects', 'project-details'],
     }),
 
     // delete project
@@ -45,6 +45,7 @@ const projectApi = baseApi.injectEndpoints({
     // project details
     getProjectDetails: builder.query<TServerResponse<TProject>, string>({
       query: (projectId) => `${projectUrl}/${projectId}`,
+      providesTags: ['project-details'],
     }),
 
     // **** Projects **** \\

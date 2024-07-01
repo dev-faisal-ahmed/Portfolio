@@ -1,19 +1,31 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import {
+  useGetProjectDetailsQuery,
+  useUpdateProjectMutation,
+} from '@/redux/api/project-api';
 import { CustomInput } from '@/components/shared/form/custom-input';
 import { MultiSelect } from '@/components/shared/form/multi-select';
 import { RichTextEditor } from '@/components/shared/form/rich-text-editor';
-import { useAddProjectMutation } from '@/redux/api/project-api';
 import { Button } from '@/components/ui/button';
 import { FormEvent, useState } from 'react';
 import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-export default function AddProjectPage() {
-  const [description, setDescription] = useState('');
-  const [technologies, setTechnologies] = useState<string[]>([]);
-  const [addProject] = useAddProjectMutation();
+export default function UpdateProjectPage() {
+  const { projectId } = useParams();
+  const { data: projectData } = useGetProjectDetailsQuery(projectId!);
+  const [description, setDescription] = useState(
+    projectData?.data?.description || '',
+  );
+  const [technologies, setTechnologies] = useState<string[]>(
+    projectData?.data?.technologies || [],
+  );
+  const [updateProject] = useUpdateProjectMutation();
   const navigate = useNavigate();
+
+  if (!projectData?.data)
+    return <p className="py-12 text-center font-semibold">No Project Found</p>;
 
   // handlers
   const onDescriptionChange = (content: string) => setDescription(content);
@@ -42,13 +54,16 @@ export default function AddProjectPage() {
       if (!description) throw new Error('Description is required');
       if (!technologies.length) throw new Error('Technologies is required');
 
-      const response = await addProject({
-        name,
-        coverUrl,
-        description,
-        links: { client, server, live },
-        priority: Number(priority),
-        technologies,
+      const response = await updateProject({
+        projectId: projectId!,
+        data: {
+          name,
+          coverUrl,
+          description,
+          links: { client, server, live },
+          priority: Number(priority),
+          technologies,
+        },
       }).unwrap();
 
       if (!response.ok) throw Error(response.message);
@@ -70,11 +85,12 @@ export default function AddProjectPage() {
           'max-w-[600px] rounded-md bg-white p-6 shadow',
         )}
       >
-        <h3 className="mb-6 text-xl font-semibold">Add New Project</h3>
+        <h3 className="mb-6 text-xl font-semibold">Update Project</h3>
         <form onSubmit={onAddProject} className="flex flex-col gap-3">
           <CustomInput
             label="Project Name"
             name="name"
+            defaultValue={projectData.data.name}
             placeholder="Enter Project Name"
             required
           />
@@ -82,6 +98,7 @@ export default function AddProjectPage() {
           <CustomInput
             label="Cover Image"
             name="coverUrl"
+            defaultValue={projectData.data.coverUrl}
             placeholder="Enter Project Cover Image Url"
             required
           />
@@ -102,6 +119,7 @@ export default function AddProjectPage() {
           <CustomInput
             label="Client Side Url"
             name="client"
+            defaultValue={projectData.data.links.client}
             placeholder="Enter Client Side Url"
             required
           />
@@ -109,6 +127,7 @@ export default function AddProjectPage() {
           <CustomInput
             label="Server Side Url"
             name="server"
+            defaultValue={projectData.data.links.server}
             placeholder="Enter Server Side Url"
             required
           />
@@ -116,6 +135,7 @@ export default function AddProjectPage() {
           <CustomInput
             label="Live Site Url"
             name="live"
+            defaultValue={projectData.data.links.live}
             placeholder="Enter Live Side Url"
             required
           />
@@ -123,11 +143,12 @@ export default function AddProjectPage() {
           <CustomInput
             label="Priority"
             name="priority"
+            defaultValue={projectData.data.priority.toString()}
             placeholder="Enter Project Priority"
             type="number"
             required
           />
-          <Button className="mt-3">Add Project</Button>
+          <Button className="mt-3">Update Project</Button>
         </form>
       </section>
     </main>
