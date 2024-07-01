@@ -25,8 +25,6 @@ export function UpdateSkill({ _id, icon, name, status, type }: TSkill) {
     const name = form.name.value;
     const icon = form.icon.value;
 
-    console.log({ name, newType, newStatus, icon });
-
     const toastId = toast.loading('Adding skills');
 
     try {

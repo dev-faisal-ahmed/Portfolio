@@ -3,6 +3,7 @@ import { Loader } from '@/components/shared/loader';
 import { TD, TH } from '@/components/shared/table';
 import { useGetSkillsQuery } from '@/redux/api/skill-api';
 import { UpdateSkill } from './update-skill';
+import { DeleteSkill } from './delete-skill';
 
 export function Skills() {
   const { data: skillsData, isFetching, isLoading } = useGetSkillsQuery(null);
@@ -15,7 +16,7 @@ export function Skills() {
     );
 
   return (
-    <div className="mt-6 rounded-md bg-white p-6">
+    <div className="mt-6 overflow-x-auto rounded-md bg-white p-6">
       {skillsData?.data && skillsData.data.length ? (
         <table className="w-full">
           <thead>
@@ -39,8 +40,9 @@ export function Skills() {
                 <TD>{skill.type}</TD>
                 <TD>{skill.status}</TD>
                 <TD>
-                  <div className="mx-auto w-fit">
+                  <div className="mx-auto flex w-fit items-center gap-4">
                     <UpdateSkill {...skill} />
+                    <DeleteSkill skillId={skill._id} />
                   </div>
                 </TD>
               </tr>

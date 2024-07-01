@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export type ServerResponseType<DataType> = {
+export type TServerResponse<DataType> = {
   data?: DataType;
   error?: any;
   message: string;

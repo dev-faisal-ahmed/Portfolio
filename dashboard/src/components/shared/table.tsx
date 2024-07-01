@@ -9,7 +9,7 @@ export const TH = ({ children, className }: TProps) => {
   return (
     <th
       className={twMerge(
-        'whitespace-nowrap bg-slate-100 py-3 text-center font-semibold uppercase',
+        'whitespace-nowrap bg-slate-100 px-6 py-3 text-center font-semibold uppercase',
         className,
       )}
     >
@@ -19,5 +19,5 @@ export const TH = ({ children, className }: TProps) => {
 };
 
 export const TD = ({ children, className }: TProps) => {
-  return <td className={twMerge('py-3', className)}>{children}</td>;
+  return <td className={twMerge('px-6 py-3', className)}>{children}</td>;
 };
