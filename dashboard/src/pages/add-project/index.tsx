@@ -7,11 +7,13 @@ import { Button } from '@/components/ui/button';
 import { FormEvent, useState } from 'react';
 import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
+import { useNavigate } from 'react-router-dom';
 
 export default function AddProjectPage() {
   const [description, setDescription] = useState('');
   const [technologies, setTechnologies] = useState<string[]>([]);
   const [addProject] = useAddProjectMutation();
+  const navigate = useNavigate();
 
   // handlers
   const onDescriptionChange = (content: string) => setDescription(content);
@@ -52,8 +54,8 @@ export default function AddProjectPage() {
       if (!response.ok) throw Error(response.message);
       toast.success(response.message, { id: toastId });
       form.reset();
-      setDescription('');
       setTechnologies([]);
+      navigate('/projects');
     } catch (err: any) {
       toast.error(err.message, { id: toastId });
     }

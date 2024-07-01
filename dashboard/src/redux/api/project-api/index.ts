@@ -50,9 +50,9 @@ const projectApi = baseApi.injectEndpoints({
     // **** Projects **** \\
 
     // project details
-    getProjects: builder.query<TServerResponse<TProject>, null>({
+    getProjects: builder.query<TServerResponse<TProject[]>, null>({
       query: () => `${projectsUrl}`,
-      providesTags: ['skills'],
+      providesTags: ['projects'],
     }),
   }),
 });

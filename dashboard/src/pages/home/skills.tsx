@@ -16,39 +16,41 @@ export function Skills() {
     );
 
   return (
-    <div className="mt-6 overflow-x-auto rounded-md bg-white p-6">
+    <div className="mt-6 rounded-md bg-white p-6">
       {skillsData?.data && skillsData.data.length ? (
-        <table className="w-full">
-          <thead>
-            <tr>
-              <TH className="rounded-s-full pl-6">Icon</TH>
-              <TH className="text-left">Technology Name</TH>
-              <TH className="text-left">Status</TH>
-              <TH className="text-left">Type</TH>
-              <TH className="rounded-e-full">Actions</TH>
-            </tr>
-          </thead>
-          <tbody>
-            {skillsData.data.map((skill) => (
-              <tr className="border-b border-neutral-300" key={skill._id}>
-                <TD className="pl-6 text-center">
-                  <div className="mx-auto w-fit text-5xl">
-                    <IconPicker iconName={skill.icon} />
-                  </div>
-                </TD>
-                <TD>{skill.name}</TD>
-                <TD>{skill.type}</TD>
-                <TD>{skill.status}</TD>
-                <TD>
-                  <div className="mx-auto flex w-fit items-center gap-4">
-                    <UpdateSkill {...skill} />
-                    <DeleteSkill skillId={skill._id} />
-                  </div>
-                </TD>
+        <div className="w-full overflow-x-auto">
+          <table className="w-full">
+            <thead>
+              <tr>
+                <TH className="rounded-s-full pl-6">Icon</TH>
+                <TH className="text-left">Technology Name</TH>
+                <TH className="text-left">Status</TH>
+                <TH className="text-left">Type</TH>
+                <TH className="rounded-e-full">Actions</TH>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {skillsData.data.map((skill) => (
+                <tr className="border-b border-neutral-300" key={skill._id}>
+                  <TD className="pl-6 text-center">
+                    <div className="mx-auto w-fit text-5xl">
+                      <IconPicker iconName={skill.icon} />
+                    </div>
+                  </TD>
+                  <TD>{skill.name}</TD>
+                  <TD>{skill.type}</TD>
+                  <TD>{skill.status}</TD>
+                  <TD>
+                    <div className="mx-auto flex w-fit items-center gap-4">
+                      <UpdateSkill {...skill} />
+                      <DeleteSkill skillId={skill._id} />
+                    </div>
+                  </TD>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       ) : (
         <p className="text-center font-semibold">No Skills Found</p>
       )}
