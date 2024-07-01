@@ -50,7 +50,7 @@ export function Skills() {
           </tbody>
         </table>
       ) : (
-        <></>
+        <p className="text-center font-semibold">No Skills Found</p>
       )}
     </div>
   );

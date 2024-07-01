@@ -18,7 +18,7 @@ export function CustomInput({
   defaultValue,
 }: TProps) {
   return (
-    <div className="space-y-1">
+    <div className="space-y-2">
       <label className="font-semibold" htmlFor={name}>
         {label}
       </label>

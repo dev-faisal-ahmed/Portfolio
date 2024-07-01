@@ -30,7 +30,7 @@ export function DeleteSkill({ skillId }: TProps) {
   return (
     <Dialog.Dialog open={isOpen} onOpenChange={setIsOpen}>
       <Dialog.DialogTrigger asChild>
-        <Button variant={'destructive'}>Update Skill</Button>
+        <Button variant={'destructive'}>Delete Skill</Button>
       </Dialog.DialogTrigger>
       <Dialog.DialogContent className="max-h-[80vh] overflow-y-auto">
         <Dialog.DialogHeader>

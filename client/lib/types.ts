@@ -8,11 +8,6 @@ export type TSkill = {
 export type TSkillType = 'FRONT_END' | 'BACK_END' | 'TOOLS' | 'OTHERS';
 export type TSkillStatus = 'EXPERT' | 'INTERMEDIATE' | 'FAMILIAR';
 
-export type TLink = {
-  url: string;
-  title: string;
-};
-
 export type TProject = {
   name: string;
   coverUrl: string;
@@ -21,4 +16,9 @@ export type TProject = {
   links: TLink[];
   technologies: string[];
   features?: string[];
+};
+
+export type TLink = {
+  url: string;
+  title: string;
 };
