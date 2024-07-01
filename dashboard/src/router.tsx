@@ -13,6 +13,7 @@ const ProjectsPage = lazy(() => import('@/pages/projects'));
 const ProjectsDetailsPage = lazy(() => import('@/pages/project-details'));
 const UpdateProjectPage = lazy(() => import('@/pages/update-project'));
 const CreateBlogPage = lazy(() => import('@/pages/create-blog'));
+const BlogsPage = lazy(() => import('@/pages/blogs'));
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
           {
             path: '/add-project',
             element: <AddProjectPage />,
+          },
+          {
+            path: '/blogs',
+            element: <BlogsPage />,
           },
           {
             path: '/create-blog',

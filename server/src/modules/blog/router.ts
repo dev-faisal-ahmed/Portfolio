@@ -26,4 +26,4 @@ BlogRouter.get('/:blogId', BlogController.GetBlogDetails);
 //  blogs
 export const BlogsRouter = Router();
 
-BlogRouter.get('/', BlogController.GetBlogs);
+BlogsRouter.get('/', BlogController.GetBlogs);

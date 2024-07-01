@@ -57,7 +57,7 @@ export default function CreateBlogPage() {
       <section
         className={cn(
           'container',
-          'max-w-[600px] rounded-md bg-white p-6 shadow',
+          'max-w-[800px] rounded-md bg-white p-6 shadow',
         )}
       >
         <h3 className="mb-6 text-xl font-semibold">Create New Blog</h3>
