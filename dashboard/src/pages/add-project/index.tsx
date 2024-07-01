@@ -33,7 +33,7 @@ export default function AddProjectPage() {
           'max-w-[600px] rounded-md bg-white p-6 shadow',
         )}
       >
-        <h3 className="mb-6 text-xl font-semibold">Add Project</h3>
+        <h3 className="mb-6 text-xl font-semibold">Add New Project</h3>
         <form onSubmit={onAddProject} className="flex flex-col gap-3">
           <CustomInput
             label="Project Name"
@@ -48,16 +48,39 @@ export default function AddProjectPage() {
             placeholder="Enter Project Cover Image Url"
             required
           />
+
           <RichTextEditor
             content={description}
             label="Description"
             onChange={onDescriptionChange}
           />
+
           <MultiSelect
             label="Technologies"
             placeholder="Enter Technologies"
             value={technologies}
             setValue={setTechnologies}
+          />
+
+          <CustomInput
+            label="Client Side Url"
+            name="client"
+            placeholder="Enter Client Side Url"
+            required
+          />
+
+          <CustomInput
+            label="Server Side Url"
+            name="server"
+            placeholder="Enter Server Side Url"
+            required
+          />
+
+          <CustomInput
+            label="Live Site Url"
+            name="server"
+            placeholder="Enter Live Side Url"
+            required
           />
           <Button>Add Project</Button>
         </form>

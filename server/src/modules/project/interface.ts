@@ -5,13 +5,13 @@ export type TProject = {
   name: string;
   coverUrl: string;
   description: string;
-  liveLink: string;
-  links: TLink[];
+  links: TLink;
   technologies: string[];
-  features?: string[];
+  priority: number;
 };
 
 export type TLink = {
-  url: string;
-  title: string;
+  client: string;
+  server: string;
+  live: string;
 };
