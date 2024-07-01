@@ -54,7 +54,7 @@ export default function AddProjectPage() {
       if (!response.ok) throw Error(response.message);
       toast.success(response.message, { id: toastId });
       form.reset();
-      setTechnologies([]);
+
       navigate('/projects');
     } catch (err: any) {
       if (err.message) return toast.error(err.message, { id: toastId });
