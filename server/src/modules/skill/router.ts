@@ -14,7 +14,18 @@ SkillRouter.post(
   SkillController.AddSkill
 );
 
+SkillRouter.patch(
+  '/:skillId',
+  AuthGuard,
+  ValidationHandler(SkillValidation.UpdateSkill),
+  SkillController.UpdateSkill
+);
+
+SkillRouter.delete('/:skillId', AuthGuard, SkillController.DeleteSkill);
+
 // skills router
 export const SkillsRouter = Router();
 
 SkillsRouter.get('/', AuthGuard, SkillController.GetSkills);
+
+SkillsRouter.get('/grouped', SkillController.GetGroupedSkills);
