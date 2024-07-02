@@ -6,6 +6,7 @@ import { Navbar } from '@/shared/navbar';
 import { Footer } from '@/shared/footer';
 import { StairTransition } from '@/shared/page-transition/stair-transition';
 import './globals.css';
+import { Toaster } from 'sonner';
 
 const font = JetBrains_Mono({
   subsets: ['latin'],
@@ -23,11 +24,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+      </head>
       <body className={cn(font.className, 'flex min-h-screen flex-col')}>
         <Navbar />
         <StairTransition />
         <PageTransition>{children}</PageTransition>
         <Footer />
+        <Toaster richColors duration={1500} />
       </body>
     </html>
   );
