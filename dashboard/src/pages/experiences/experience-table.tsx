@@ -2,7 +2,7 @@ import { Loader } from '@/components/shared/loader';
 import { TD, TH } from '@/components/shared/table';
 import { useGetExperiencesQuery } from '@/redux/api/experience-api';
 import { UpdateExperience } from './update-experience';
-import { DeleteExperience } from './delete-experince';
+import { DeleteExperience } from './delete-experience';
 
 export function ExperienceTable() {
   const {
