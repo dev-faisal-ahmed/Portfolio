@@ -1,7 +1,7 @@
 import { TServerResponse } from '@/utils/types';
 import { baseApi } from '..';
 import { TAddProjectPayload, TUpdateProjectPayload } from './types';
-import { TProject } from '@/utils/types/project.types';
+import { TProject } from '@/utils/types';
 
 const projectUrl = 'project';
 const projectsUrl = 'projects';

@@ -1,7 +1,7 @@
 import { TServerResponse } from '@/utils/types';
 import { baseApi } from '..';
 import { TCreateBlogPayload, TUpdateBlogPayload } from './types';
-import { TBlog } from '@/utils/types/blog.types';
+import { TBlog } from '@/utils/types';
 
 const blogUrl = 'blog';
 const blogsUrl = 'blogs';
