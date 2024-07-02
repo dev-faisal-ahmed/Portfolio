@@ -8,4 +8,7 @@ export const apiUrl = {
   getProjects: `${serverAddress}/projects`,
   getProjectDetails: (projectId: string) =>
     `${serverAddress}/project/${projectId}`,
+
+  // blog
+  getBlogs: `${serverAddress}/blogs`,
 };

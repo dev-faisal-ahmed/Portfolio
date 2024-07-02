@@ -54,7 +54,6 @@ export function ProjectCard(project: TProject) {
             Details
           </Button>
         </Link>
-        {/* <ProjectDetails {...project} /> */}
       </div>
     </div>
   );

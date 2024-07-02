@@ -1,7 +1,5 @@
-import { Schema } from 'mongoose';
-
 export type TBlog = {
-  _id: Schema.Types.ObjectId;
+  _id: string;
   title: string;
   image: string;
   content: string;
