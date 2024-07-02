@@ -14,7 +14,7 @@ export default async function BlogDetailsPage({ params: { blogId } }: TProps) {
     return <p className="mt-12 text-center font-semibold">No Blog Found</p>;
 
   return (
-    <main className={cn('container', 'max-w-[900px] py-6')}>
+    <main className={cn('container', 'w-full max-w-[900px] py-6')}>
       <Image
         width={700}
         height={700}
@@ -22,7 +22,7 @@ export default async function BlogDetailsPage({ params: { blogId } }: TProps) {
         className="w-full rounded-2xl"
         src={blogDetails.image}
       />
-      <div className="mt-6 flex items-center gap-3">
+      <div className="mt-6 flex flex-wrap items-center gap-3">
         {blogDetails.tags.map((tag) => (
           <p
             key={tag}

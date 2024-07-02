@@ -1,4 +1,4 @@
-const serverAddress = 'http://localhost:5000/api/v1';
+const serverAddress = 'https://portfolio-server-faisal.vercel.app/api/v1';
 
 export const apiUrl = {
   // skill
