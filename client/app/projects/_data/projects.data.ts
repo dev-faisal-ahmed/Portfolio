@@ -105,7 +105,7 @@ export const projects = [
   {
     name: 'People Sync',
     description:
-      'his efficient recruiting tracking app streamlines the hiring process for administrators. Admins can create job postings and track applications from candidates who can apply without creating an account. The app allows admins to review applications, update candidate statuses, and manage the entire recruitment process seamlessly.',
+      'This efficient recruiting tracking app streamlines the hiring process for administrators. Admins can create job postings and track applications from candidates who can apply without creating an account. The app allows admins to review applications, update candidate statuses, and manage the entire recruitment process seamlessly.',
     features: [
       'Admin can create job postings.',
       'Candidates can apply without an account.',

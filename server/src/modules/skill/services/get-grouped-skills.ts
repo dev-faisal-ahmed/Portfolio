@@ -10,6 +10,11 @@ export const GetGroupedSkills = async () => {
         },
       },
     },
+    {
+      $sort: {
+        _id: 1,
+      },
+    },
   ]);
 
   return skills;

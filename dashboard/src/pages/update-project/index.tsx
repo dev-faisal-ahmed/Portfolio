@@ -11,10 +11,13 @@ import { FormEvent, useState } from 'react';
 import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
 import { useNavigate, useParams } from 'react-router-dom';
+import { Loader } from '@/components/shared/loader';
 
 export default function UpdateProjectPage() {
   const { projectId } = useParams();
-  const { data: projectData } = useGetProjectDetailsQuery(projectId!);
+  const { data: projectData, isLoading } = useGetProjectDetailsQuery(
+    projectId!,
+  );
   const [description, setDescription] = useState(
     projectData?.data?.description || '',
   );
@@ -23,6 +26,13 @@ export default function UpdateProjectPage() {
   );
   const [updateProject] = useUpdateProjectMutation();
   const navigate = useNavigate();
+
+  if (isLoading)
+    return (
+      <div className="flex w-full items-center justify-center p-6">
+        <Loader />
+      </div>
+    );
 
   if (!projectData?.data)
     return <p className="py-12 text-center font-semibold">No Project Found</p>;
