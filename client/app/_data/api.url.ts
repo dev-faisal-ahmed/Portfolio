@@ -11,4 +11,5 @@ export const apiUrl = {
 
   // blog
   getBlogs: `${serverAddress}/blogs`,
+  getBlogDetails: (blogId: string) => `${serverAddress}/blog/${blogId}`,
 };

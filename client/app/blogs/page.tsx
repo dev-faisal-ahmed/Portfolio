@@ -13,40 +13,39 @@ export default async function BlogPage() {
     <main className="container py-12">
       <Heading>Blogs.</Heading>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {blogs.map(({ _id, content, tags, title, image }) => (
           <div
             key={_id}
-            className="overflow-hidden rounded-2xl bg-neutral-800/40 ring-1 ring-white/50 transition duration-300 hover:translate-y-1"
+            className="overflow-hidden rounded-2xl bg-neutral-800/40 p-4 ring-1 ring-white/50 transition duration-300 hover:translate-y-1"
           >
             <Image
-              className="h-[250px] object-cover object-center"
+              className="h-[250px] rounded-xl object-cover object-center"
               src={image}
               width={500}
               height={500}
               alt="Project Image"
             />
-            <div className="p-4">
-              <div className="mt-6 flex flex-wrap gap-3">
-                {tags.map((tag) => (
-                  <span
-                    className="flex-1 whitespace-nowrap rounded-full bg-neutral-600 px-3 py-1 text-center text-xs font-semibold"
-                    key={tag}
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <Link href={`/blog/${_id}`}>
-                <h3 className="mt-6 line-clamp-1 text-xl hover:text-primary hover:underline">
-                  {title}
-                </h3>
-              </Link>
-              <div
-                className="mt-6 line-clamp-3 text-sm"
-                dangerouslySetInnerHTML={{ __html: content }}
-              />
+
+            <div className="mt-6 flex flex-wrap gap-3">
+              {tags.map((tag) => (
+                <span
+                  className="flex-1 whitespace-nowrap rounded-full bg-neutral-600 px-3 py-1 text-center text-xs font-semibold"
+                  key={tag}
+                >
+                  {tag}
+                </span>
+              ))}
             </div>
+            <Link href={`/blog/${_id}`}>
+              <h3 className="mt-6 line-clamp-1 text-xl hover:text-primary hover:underline">
+                {title}
+              </h3>
+            </Link>
+            <div
+              className="mt-6 line-clamp-3 text-sm text-neutral-400"
+              dangerouslySetInnerHTML={{ __html: content }}
+            />
           </div>
         ))}
       </div>
