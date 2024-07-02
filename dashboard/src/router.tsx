@@ -4,8 +4,6 @@ import { Loader } from './components/shared/loader';
 import { RootLayout } from './layout/root-layout';
 import { MainLayout } from './layout/main-layout';
 
-// import { RootLayout } from '@/pages/layout';
-
 const LoginPage = lazy(() => import('@/pages/login'));
 const HomePage = lazy(() => import('@/pages/home'));
 const AddProjectPage = lazy(() => import('@/pages/add-project'));
@@ -15,6 +13,7 @@ const UpdateProjectPage = lazy(() => import('@/pages/update-project'));
 const CreateBlogPage = lazy(() => import('@/pages/create-blog'));
 const BlogsPage = lazy(() => import('@/pages/blogs'));
 const BlogDetailsPage = lazy(() => import('@/pages/blog-details'));
+const UpdateBlogPage = lazy(() => import('@/pages/update-blog'));
 
 const router = createBrowserRouter([
   {
@@ -52,6 +51,10 @@ const router = createBrowserRouter([
           {
             path: '/blog/:blogId',
             element: <BlogDetailsPage />,
+          },
+          {
+            path: '/update-blog/:blogId',
+            element: <UpdateBlogPage />,
           },
           {
             path: '/create-blog',

@@ -1,4 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import {
+  useGetBlogDetailsQuery,
+  useUpdateBlogMutation,
+} from '@/redux/api/blog-api';
 import { CustomInput } from '@/components/shared/form/custom-input';
 import { MultiSelect } from '@/components/shared/form/multi-select';
 import { RichTextEditor } from '@/components/shared/form/rich-text-editor';
@@ -6,19 +10,31 @@ import { Button } from '@/components/ui/button';
 import { FormEvent, useState } from 'react';
 import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
-import { useNavigate } from 'react-router-dom';
-import { useCreateBlogMutation } from '@/redux/api/blog-api';
+import { useNavigate, useParams } from 'react-router-dom';
+import { Loader } from '@/components/shared/loader';
 
-export default function CreateBlogPage() {
-  const [content, setContent] = useState('');
-  const [tags, setTags] = useState<string[]>([]);
-  const [createBlog] = useCreateBlogMutation();
+export default function UpdateBlogPage() {
+  const { blogId } = useParams();
+  const { data: blogDetails, isLoading } = useGetBlogDetailsQuery(blogId!);
+  const [content, setContent] = useState(blogDetails?.data?.content || '');
+  const [tags, setTags] = useState<string[]>(blogDetails?.data?.tags || []);
+  const [updateBlog] = useUpdateBlogMutation();
   const navigate = useNavigate();
+
+  if (isLoading)
+    return (
+      <div className="flex w-full items-center justify-center p-6">
+        <Loader />
+      </div>
+    );
+
+  if (!blogDetails?.data)
+    return <p className="mt-6 text-center font-semibold">No Blog Found</p>;
 
   // handlers
   const onContentChange = (content: string) => setContent(content);
 
-  const onAddProject = async (event: FormEvent<HTMLFormElement>) => {
+  const onProjectUpdate = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const form = event.target as HTMLFormElement & {
@@ -29,23 +45,21 @@ export default function CreateBlogPage() {
     const title = form.title.value.trim();
     const image = form.image.value.trim();
 
-    const toastId = toast.loading('Updating the blog');
+    const toastId = toast.loading('Creating the blog');
     try {
       if (!content) throw new Error('Description is required');
       if (!tags.length) throw new Error('Technologies is required');
 
-      const response = await createBlog({
-        title,
-        image,
-        content,
-        tags,
+      const response = await updateBlog({
+        blogId: blogId!,
+        payload: { title, image, content, tags },
       }).unwrap();
 
       if (!response.ok) throw Error(response.message);
       toast.success(response.message, { id: toastId });
       form.reset();
 
-      navigate('/blogs');
+      navigate(`/blog/${blogId}`);
     } catch (err: any) {
       if (err.message) return toast.error(err.message, { id: toastId });
       toast.error(err.data?.message || 'Something went wrong', { id: toastId });
@@ -60,11 +74,12 @@ export default function CreateBlogPage() {
           'max-w-[800px] rounded-md bg-white p-6 shadow',
         )}
       >
-        <h3 className="mb-6 text-xl font-semibold">Create New Blog</h3>
-        <form onSubmit={onAddProject} className="flex flex-col gap-3">
+        <h3 className="mb-6 text-xl font-semibold">Update Blog</h3>
+        <form onSubmit={onProjectUpdate} className="flex flex-col gap-3">
           <CustomInput
             label="Title"
             name="title"
+            defaultValue={blogDetails.data.title}
             placeholder="Enter Title"
             required
           />
@@ -72,6 +87,7 @@ export default function CreateBlogPage() {
           <CustomInput
             label="Image"
             name="image"
+            defaultValue={blogDetails.data.image}
             placeholder="Enter Image Url"
             required
           />
@@ -89,7 +105,7 @@ export default function CreateBlogPage() {
             setValue={setTags}
           />
 
-          <Button className="mt-3">Create</Button>
+          <Button className="mt-3">Update Blog</Button>
         </form>
       </section>
     </main>
