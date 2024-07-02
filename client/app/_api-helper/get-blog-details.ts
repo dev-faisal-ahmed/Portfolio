@@ -1,4 +1,4 @@
-import { TBlog } from '@/lib/types/blog.types';
+import { TBlog } from '@/lib/types';
 import { apiUrl } from '../_data/api.url';
 
 export const getBlogDetails = async (blogId: string) => {
