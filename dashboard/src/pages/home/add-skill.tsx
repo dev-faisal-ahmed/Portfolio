@@ -37,7 +37,6 @@ export function AddSkill() {
         icon,
       }).unwrap();
 
-      console.log(response);
       if (!response.ok) throw new Error(response.message);
       toast.success(response.message, { id: toastId });
 
