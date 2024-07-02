@@ -4,6 +4,7 @@ import { useDeleteProjectMutation } from '@/redux/api/project-api';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import { toast } from 'sonner';
+import { RiDeleteBin7Fill } from 'react-icons/ri';
 
 type TProps = {
   projectId: string;
@@ -33,7 +34,9 @@ export function DeleteProject({ projectId }: TProps) {
   return (
     <Dialog.Dialog open={isOpen} onOpenChange={setIsOpen}>
       <Dialog.DialogTrigger asChild>
-        <Button variant={'destructive'}>Delete Skill</Button>
+        <Button size={'icon'} variant={'outline'}>
+          <RiDeleteBin7Fill size={20} />
+        </Button>
       </Dialog.DialogTrigger>
       <Dialog.DialogContent className="max-h-[80vh] overflow-y-auto">
         <Dialog.DialogHeader>

@@ -1,16 +1,7 @@
 import { Heading } from '@/shared/heading';
 import { SkillGroup } from './skill-group';
-import { apiUrl } from '@/app/_data/api.url';
-import { TGroupedSkills } from '@/lib/types';
 import { NetworkError } from '@/components/shared/network-error';
-
-const getGroupedSkills = async () => {
-  const response = await fetch(apiUrl.getGroupedSkills, { cache: 'no-cache' });
-  const responseData = await response.json();
-  if (!responseData.ok) return null;
-
-  return responseData?.data as TGroupedSkills[];
-};
+import { getGroupedSkills } from '@/app/_api-helper';
 
 export async function Skills() {
   const groupedSkills = await getGroupedSkills();

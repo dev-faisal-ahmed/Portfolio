@@ -6,6 +6,7 @@ import { TExperience } from '@/utils/types';
 import { FormEvent, useState } from 'react';
 import { useUpdateExperienceMutation } from '@/redux/api/experience-api';
 import { CustomTextArea } from '@/components/shared/form/custom-text-area';
+import { RiEditFill } from 'react-icons/ri';
 import { toast } from 'sonner';
 
 export function UpdateExperience({
@@ -61,7 +62,9 @@ export function UpdateExperience({
   return (
     <Dialog.Dialog open={isOpen} onOpenChange={setIsOpen}>
       <Dialog.DialogTrigger asChild>
-        <Button variant={'secondary'}>Update</Button>
+        <Button size={'icon'} variant={'outline'}>
+          <RiEditFill size={20} />
+        </Button>
       </Dialog.DialogTrigger>
       <Dialog.DialogContent className="max-h-[80vh] overflow-y-auto">
         <Dialog.DialogHeader>

@@ -1,6 +1,4 @@
-import { TProject } from '@/lib/types';
-
-export const projects: TProject[] = [
+export const projects = [
   {
     name: 'Travel Buddy',
     description:

@@ -2,14 +2,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { TProject } from '@/lib/types';
-import { ProjectDetails } from './project-details';
 
 export function ProjectCard(project: TProject) {
-  const { coverUrl, technologies, name, description, links, liveLink } =
-    project;
+  const { _id, coverUrl, technologies, name, description, links } = project;
 
   return (
-    <div className="cursor-pointer rounded-2xl bg-neutral-800 p-6">
+    <div className="cursor-pointer rounded-2xl bg-neutral-800/40 p-6 ring-1 ring-white/50 transition duration-300 hover:-translate-y-1">
       <Image
         className="w-full rounded-xl"
         src={coverUrl}
@@ -30,21 +28,33 @@ export function ProjectCard(project: TProject) {
       <h3 className="mt-8 text-2xl font-bold uppercase tracking-wider">
         {name}
       </h3>
-      <p className="mt-3 line-clamp-3 text-justify text-sm text-white/70">
-        {description}
-      </p>
+
+      <div
+        dangerouslySetInnerHTML={{ __html: description }}
+        className="mt-6 line-clamp-3 text-justify text-sm text-white/70"
+      />
       <div className="mt-8 flex flex-row flex-wrap items-center justify-end gap-6">
-        {links.map(({ url, title }) => (
-          <Link className="flex-1" key={url} href={url} target="_blank">
-            <Button className="w-full" variant={'outline'}>
-              {title}
-            </Button>
-          </Link>
-        ))}
-        <Link className="flex-1" href={liveLink} target="_blank">
+        <Link className="flex-1" href={links.client} target="_blank">
+          <Button className="w-full" variant={'outline'}>
+            Client
+          </Button>
+        </Link>
+
+        <Link className="flex-1" href={links.server} target="_blank">
+          <Button className="w-full" variant={'outline'}>
+            Server
+          </Button>
+        </Link>
+
+        <Link className="flex-1" href={links.live} target="_blank">
           <Button className="w-full">Live Site</Button>
         </Link>
-        <ProjectDetails {...project} />
+        <Link href={`/project/${_id}`}>
+          <Button className="bg-cyan-600 text-white hover:bg-cyan-700">
+            Details
+          </Button>
+        </Link>
+        {/* <ProjectDetails {...project} /> */}
       </div>
     </div>
   );

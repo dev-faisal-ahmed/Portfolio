@@ -1,15 +1,18 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { Typewriter } from './_components/typewriter';
 import { ArrowBigDownDashIcon } from 'lucide-react';
 import { SocialIcons } from '@/components/shared/social-icons';
 import { Heading } from '@/components/shared/heading';
-import { projects } from '../projects/_data/projects.data';
 import { ProjectCard } from '@/shared/project-card';
-import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { getProjects } from '../_api-helper/get-projects';
+import { NetworkError } from '@/components/shared/network-error';
 
-export default function HomePage() {
+export default async function HomePage() {
+  const projects = await getProjects();
+
   return (
     <main className="container mb-10 mt-20">
       <section className="flex flex-col-reverse items-center gap-20 lg:flex-row lg:gap-6">
@@ -63,11 +66,15 @@ export default function HomePage() {
         </Link>
       </div>
 
-      <div className="mt-6 grid gap-12 md:grid-cols-2">
-        {projects.map((project) => (
-          <ProjectCard key={project.name} {...project} />
-        ))}
-      </div>
+      {projects && projects.length ? (
+        <div className="mt-6 grid gap-12 md:grid-cols-2">
+          {projects.map((project) => (
+            <ProjectCard key={project.name} {...project} />
+          ))}
+        </div>
+      ) : (
+        <NetworkError />
+      )}
     </main>
   );
 }

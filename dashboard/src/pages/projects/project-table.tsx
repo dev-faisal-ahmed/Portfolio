@@ -4,6 +4,8 @@ import { Button } from '@/components/ui/button';
 import { useGetProjectsQuery } from '@/redux/api/project-api';
 import { Link } from 'react-router-dom';
 import { DeleteProject } from './delete-project';
+import { RiEditFill } from 'react-icons/ri';
+import { IoMdListBox } from 'react-icons/io';
 
 export function ProjectTable() {
   const {
@@ -59,10 +61,14 @@ export function ProjectTable() {
                   <TD>
                     <div className="mx-auto flex w-fit items-center gap-4">
                       <Link to={`/update-project/${project._id}`}>
-                        <Button variant={'secondary'}>Update</Button>
+                        <Button size={'icon'} variant={'outline'}>
+                          <RiEditFill size={20} />
+                        </Button>
                       </Link>
                       <Link to={`/project/${project._id}`}>
-                        <Button variant={'outline'}>Details</Button>
+                        <Button size={'icon'} variant={'outline'}>
+                          <IoMdListBox size={20} />
+                        </Button>
                       </Link>
                       <DeleteProject projectId={project._id} />
                     </div>

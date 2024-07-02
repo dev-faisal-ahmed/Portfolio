@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as Dialog from '@/components/ui/dialog';
+import { RiEditFill } from 'react-icons/ri';
 import { useUpdateSkillMutation } from '@/redux/api/skill-api';
 import { CustomInput } from '@/components/shared/form/custom-input';
 import { CustomSelect } from '@/components/shared/form/custom-select';
@@ -56,7 +57,9 @@ export function UpdateSkill({ _id, icon, name, status, type }: TSkill) {
   return (
     <Dialog.Dialog open={isOpen} onOpenChange={setIsOpen}>
       <Dialog.DialogTrigger asChild>
-        <Button variant={'secondary'}>Update Skill</Button>
+        <Button size={'icon'} variant={'outline'}>
+          <RiEditFill size={20} />
+        </Button>
       </Dialog.DialogTrigger>
       <Dialog.DialogContent className="max-h-[80vh] overflow-y-auto">
         <Dialog.DialogHeader>

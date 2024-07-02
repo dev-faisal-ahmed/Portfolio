@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import { toast } from 'sonner';
 import { useDeleteExperienceMutation } from '@/redux/api/experience-api';
+import { RiDeleteBin7Fill } from 'react-icons/ri';
 
 type TProps = {
   experienceId: string;
@@ -33,7 +34,9 @@ export function DeleteExperience({ experienceId }: TProps) {
   return (
     <Dialog.Dialog open={isOpen} onOpenChange={setIsOpen}>
       <Dialog.DialogTrigger asChild>
-        <Button variant={'destructive'}>Delete</Button>
+        <Button size={'icon'} variant={'outline'}>
+          <RiDeleteBin7Fill size={20} />
+        </Button>
       </Dialog.DialogTrigger>
       <Dialog.DialogContent className="max-h-[80vh] overflow-y-auto">
         <Dialog.DialogHeader>
