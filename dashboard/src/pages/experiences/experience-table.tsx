@@ -2,6 +2,7 @@ import { Loader } from '@/components/shared/loader';
 import { TD, TH } from '@/components/shared/table';
 import { useGetExperiencesQuery } from '@/redux/api/experience-api';
 import { UpdateExperience } from './update-experience';
+import { DeleteExperience } from './delete-experince';
 
 export function ExperienceTable() {
   const {
@@ -44,6 +45,7 @@ export function ExperienceTable() {
                   <TD>
                     <div className="flex items-center justify-center gap-3">
                       <UpdateExperience {...experience} />
+                      <DeleteExperience experienceId={experience._id} />
                     </div>
                   </TD>
                 </tr>

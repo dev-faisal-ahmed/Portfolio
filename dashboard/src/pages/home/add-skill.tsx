@@ -43,7 +43,10 @@ export function AddSkill() {
       form.reset();
       setIsOpen(false);
     } catch (err: any) {
-      toast.error(err?.message, { id: toastId });
+      if (err.message) return toast.error(err.message, { id: toastId });
+      toast.error(err.data?.message || 'Something went wrong', {
+        id: toastId,
+      });
     }
   };
 

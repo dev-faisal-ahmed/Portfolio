@@ -51,14 +51,17 @@ export function UpdateExperience({
       form.reset();
       setIsOpen(false);
     } catch (err: any) {
-      toast.error(err?.message, { id: toastId });
+      if (err.message) return toast.error(err.message, { id: toastId });
+      toast.error(err.data?.message || 'Something went wrong', {
+        id: toastId,
+      });
     }
   };
 
   return (
     <Dialog.Dialog open={isOpen} onOpenChange={setIsOpen}>
       <Dialog.DialogTrigger asChild>
-        <Button variant={'secondary'}>Update Experience</Button>
+        <Button variant={'secondary'}>Update</Button>
       </Dialog.DialogTrigger>
       <Dialog.DialogContent className="max-h-[80vh] overflow-y-auto">
         <Dialog.DialogHeader>

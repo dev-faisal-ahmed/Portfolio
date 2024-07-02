@@ -14,7 +14,7 @@ export function DeleteProject({ projectId }: TProps) {
   const [deleteProject] = useDeleteProjectMutation();
 
   const onDeleteProject = async () => {
-    const toastId = toast.loading('Adding skills');
+    const toastId = toast.loading('Deleting Project');
 
     try {
       const response = await deleteProject(projectId).unwrap();
@@ -23,7 +23,10 @@ export function DeleteProject({ projectId }: TProps) {
 
       setIsOpen(false);
     } catch (err: any) {
-      toast.error(err?.message, { id: toastId });
+      if (err.message) return toast.error(err.message, { id: toastId });
+      toast.error(err.data?.message || 'Something went wrong', {
+        id: toastId,
+      });
     }
   };
 
