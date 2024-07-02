@@ -1,6 +1,7 @@
 import { Loader } from '@/components/shared/loader';
 import { TD, TH } from '@/components/shared/table';
 import { useGetExperiencesQuery } from '@/redux/api/experience-api';
+import { UpdateExperience } from './update-experience';
 
 export function ExperienceTable() {
   const {
@@ -40,6 +41,11 @@ export function ExperienceTable() {
                   <TD>{experience.organizationName}</TD>
                   <TD>{experience.designation}</TD>
                   <TD>{experience.duration}</TD>
+                  <TD>
+                    <div className="flex items-center justify-center gap-3">
+                      <UpdateExperience {...experience} />
+                    </div>
+                  </TD>
                 </tr>
               ))}
             </tbody>

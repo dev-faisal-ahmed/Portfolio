@@ -51,7 +51,7 @@ export function AddExperience() {
       </Dialog.DialogTrigger>
       <Dialog.DialogContent className="max-h-[80vh] overflow-y-auto">
         <Dialog.DialogHeader>
-          <Dialog.DialogTitle>Add Skill</Dialog.DialogTitle>
+          <Dialog.DialogTitle>Add Experience</Dialog.DialogTitle>
         </Dialog.DialogHeader>
         <form onSubmit={onAddExperience} className="flex flex-col gap-3">
           <CustomInput
@@ -79,7 +79,7 @@ export function AddExperience() {
             rows={4}
             required
           />
-          <Button className="mt-3">Add Skill</Button>
+          <Button className="mt-3">Add Experience</Button>
         </form>
       </Dialog.DialogContent>
     </Dialog.Dialog>

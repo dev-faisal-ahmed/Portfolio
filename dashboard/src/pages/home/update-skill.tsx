@@ -25,7 +25,7 @@ export function UpdateSkill({ _id, icon, name, status, type }: TSkill) {
     const name = form.name.value;
     const icon = form.icon.value;
 
-    const toastId = toast.loading('Adding skills');
+    const toastId = toast.loading('Updating skill');
 
     try {
       if (!newType) throw new Error('Skill Type is required');
@@ -90,7 +90,7 @@ export function UpdateSkill({ _id, icon, name, status, type }: TSkill) {
             label="Icon"
             required
           />
-          <Button className="mt-3">Add Skill</Button>
+          <Button className="mt-3">Update Skill</Button>
         </form>
       </Dialog.DialogContent>
     </Dialog.Dialog>
