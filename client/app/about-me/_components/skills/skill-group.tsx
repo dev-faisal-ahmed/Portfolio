@@ -1,9 +1,16 @@
-import { TSkill } from '@/lib/types';
+import { TSkill, TSkillType } from '@/lib/types';
 import { SkillCard } from './skill.card';
 
 type TProps = {
   title: string;
   skills: TSkill[];
+};
+
+const convertTitle = (title: TSkillType) => {
+  if (title === 'FRONT_END') return 'FrontEnd.';
+  if (title === 'BACK_END') return 'BackEnd.';
+  if (title === 'TOOLS') return 'Tools.';
+  if (title === 'OTHERS') return 'Others.';
 };
 
 export function SkillGroup({ title, skills }: TProps) {

@@ -1,4 +1,5 @@
 export type TSkill = {
+  _id: string;
   name: string;
   type: TSkillType;
   status: TSkillStatus;
@@ -8,17 +9,7 @@ export type TSkill = {
 export type TSkillType = 'FRONT_END' | 'BACK_END' | 'TOOLS' | 'OTHERS';
 export type TSkillStatus = 'EXPERT' | 'INTERMEDIATE' | 'FAMILIAR';
 
-export type TProject = {
-  name: string;
-  coverUrl: string;
-  description: string;
-  liveLink: string;
-  links: TLink[];
-  technologies: string[];
-  features?: string[];
-};
-
-export type TLink = {
-  url: string;
-  title: string;
+export type TGroupedSkills = {
+  _id: TSkillType;
+  skills: TSkill[];
 };
