@@ -1,5 +1,6 @@
 import { Heading } from '@/components/shared/heading';
 import { AddExperience } from './add-experience';
+import { ExperienceTable } from './experience-table';
 
 export default function ExperiencesPage() {
   return (
@@ -8,6 +9,7 @@ export default function ExperiencesPage() {
         <Heading>Experiences</Heading>
         <AddExperience />
       </section>
+      <ExperienceTable />
     </main>
   );
 }

@@ -30,4 +30,4 @@ ExperienceRouter.delete(
 // experiences
 export const ExperiencesRouter = Router();
 
-ExperienceRouter.get('/', ExperienceController.GetExperiences);
+ExperiencesRouter.get('/', ExperienceController.GetExperiences);
