@@ -26,13 +26,16 @@ export default function BlogsPage() {
         </Link>
       </div>
       {blogsData?.data && blogsData.data.length ? (
-        <div className="grid md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {blogsData.data.map((blog) => (
             <div
               className="overflow-hidden rounded-2xl bg-white"
               key={blog._id}
             >
-              <img className="shadow" src={blog.image} />
+              <img
+                className="h-[200px] w-full object-cover object-center shadow"
+                src={blog.image}
+              />
               <div className="p-4">
                 <div className="flex flex-wrap items-center gap-3">
                   {blog.tags.map((tag) => (

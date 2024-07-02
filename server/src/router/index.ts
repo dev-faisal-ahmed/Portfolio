@@ -1,4 +1,8 @@
 import { Router } from 'express';
+import {
+  ExperienceRouter,
+  ExperiencesRouter,
+} from '../modules/experience/router';
 import { AuthRouter } from '../modules/auth/router';
 import { SkillRouter, SkillsRouter } from '../modules/skill/router';
 import { ProjectRouter, ProjectsRouter } from '../modules/project/router';
@@ -13,3 +17,5 @@ AppRouter.use('/project', ProjectRouter);
 AppRouter.use('/projects', ProjectsRouter);
 AppRouter.use('/blog', BlogRouter);
 AppRouter.use('/blogs', BlogsRouter);
+AppRouter.use('/experience', ExperienceRouter);
+AppRouter.use('/experiences', ExperiencesRouter);
