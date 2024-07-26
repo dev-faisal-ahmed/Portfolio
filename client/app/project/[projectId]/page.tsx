@@ -1,4 +1,4 @@
-import { getProjectDetails } from '@/app/_api-helper/get-project-details';
+import { projects } from '@/app/_data';
 import { Parsed } from '@/components/shared/parsed/parsed';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
@@ -8,10 +8,8 @@ type TProps = {
   params: { projectId: string };
 };
 
-export default async function ProjectDetailsPage({
-  params: { projectId },
-}: TProps) {
-  const projectDetails = await getProjectDetails(projectId);
+export default function ProjectDetailsPage({ params: { projectId } }: TProps) {
+  const projectDetails = projects.find((project) => project._id === projectId);
 
   if (!projectDetails)
     return <p className="my-6 text-center font-semibold">No Project Found</p>;

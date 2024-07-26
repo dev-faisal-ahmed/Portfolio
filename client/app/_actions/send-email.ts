@@ -1,7 +1,10 @@
 'use server';
 
-import { mailOptions, transporter } from '@/app/_config/node-mailer-config';
-import { emailTemplate } from '@/app/_template/email-template';
+import {
+  mailOptions,
+  transporter,
+} from '@/app/_email-helper/node-mailer-config';
+import { emailTemplate } from '../_email-helper/email-template';
 
 type TSendEmailPayload = {
   email: string;

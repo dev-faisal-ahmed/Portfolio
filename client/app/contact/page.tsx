@@ -1,7 +1,6 @@
 'use client';
 
 import { FormEvent, useState } from 'react';
-import { twMerge } from 'tailwind-merge';
 import { IoMdSend } from 'react-icons/io';
 import { toast } from 'sonner';
 import { CustomInput } from '@/components/shared/form/custom-input';
