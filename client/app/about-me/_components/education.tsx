@@ -1,5 +1,5 @@
+import { educations } from '@/app/_data/education';
 import { Heading } from '@/shared/heading';
-import { educations } from './education.data';
 
 export function Education() {
   return (

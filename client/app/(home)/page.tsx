@@ -8,6 +8,11 @@ import { Heading } from '@/components/shared/heading';
 import { ProjectCard } from '@/shared/project-card';
 import { Button } from '@/components/ui/button';
 import { projects } from '../_data';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Faisal Ahmed',
+};
 
 export default function HomePage() {
   return (

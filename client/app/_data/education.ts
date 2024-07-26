@@ -1,10 +1,4 @@
-type TEducation = {
-  year: string;
-  degreeName: string;
-  institution: string;
-  obtainedCgpa: number;
-  totalCgpa: number;
-};
+import { TEducation } from '@/lib/types';
 
 export const educations: TEducation[] = [
   {

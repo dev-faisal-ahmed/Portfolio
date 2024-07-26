@@ -1,17 +1,11 @@
-'use client';
-
-import { socialLinks } from '@/app/(home)/_data/social-links';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { SocialIcons } from './social-icons';
 
 export function Footer() {
-  const pathName = usePathname();
-
   return (
     <footer className="mt-auto flex flex-col items-center bg-black py-4 text-sm">
-      {pathName !== '/' && <SocialIcons />}
-
+      <SocialIcons />
       <h3>
         Designed & developed by{' '}
         <Link

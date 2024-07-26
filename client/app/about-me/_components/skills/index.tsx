@@ -1,23 +1,14 @@
 import { Heading } from '@/shared/heading';
 import { SkillGroup } from './skill-group';
-import { NetworkError } from '@/components/shared/network-error';
-import { getGroupedSkills } from '@/app/_api-helper';
+import { skills } from '@/app/_data';
 
-export async function Skills() {
-  const groupedSkills = await getGroupedSkills();
-
+export function Skills() {
   return (
     <>
-      {groupedSkills && groupedSkills.length ? (
-        <>
-          <Heading className="mt-16">My Skills.</Heading>
-          {groupedSkills.map(({ _id, skills }) => (
-            <SkillGroup key={_id} title={_id} skills={skills} />
-          ))}
-        </>
-      ) : (
-        <NetworkError />
-      )}
+      <Heading className="mt-16">My Skills.</Heading>
+      <SkillGroup title="Front End" skills={skills.frontEnds} />
+      <SkillGroup title="Back End" skills={skills.backends} />
+      <SkillGroup title="Tools" skills={skills.tools} />
     </>
   );
 }

@@ -10,7 +10,7 @@ type TProps = {
 
 export function SkillCard({ icon, name, status }: TProps) {
   return (
-    <div className="cursor-pointer rounded-2xl bg-neutral-800 p-6 text-center transition hover:shadow-[0_0_90px_5px_#159763]">
+    <div className="cursor-pointer rounded-2xl bg-neutral-800 p-6 text-center transition hover:shadow-[0_0_20px_5px_#159763]">
       <div className="mx-auto mb-6 w-fit text-6xl">
         <IconPicker iconName={icon} />
       </div>
