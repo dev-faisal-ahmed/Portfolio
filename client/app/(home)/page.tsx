@@ -7,12 +7,9 @@ import { SocialIcons } from '@/components/shared/social-icons';
 import { Heading } from '@/components/shared/heading';
 import { ProjectCard } from '@/shared/project-card';
 import { Button } from '@/components/ui/button';
-import { getProjects } from '../_api-helper/get-projects';
-import { NetworkError } from '@/components/shared/network-error';
+import { projects } from '../_data';
 
-export default async function HomePage() {
-  const projects = await getProjects();
-
+export default function HomePage() {
   return (
     <main className="container mb-10 mt-20">
       <section className="flex flex-col-reverse items-center gap-20 lg:flex-row lg:gap-6">
@@ -66,15 +63,11 @@ export default async function HomePage() {
         </Link>
       </div>
 
-      {projects && projects.length ? (
-        <div className="mt-6 grid gap-12 md:grid-cols-2">
-          {projects.map((project) => (
-            <ProjectCard key={project.name} {...project} />
-          ))}
-        </div>
-      ) : (
-        <NetworkError />
-      )}
+      <div className="mt-6 grid gap-12 md:grid-cols-2">
+        {projects.map((project) => (
+          <ProjectCard key={project.name} {...project} />
+        ))}
+      </div>
     </main>
   );
 }

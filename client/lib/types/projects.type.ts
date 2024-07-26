@@ -5,7 +5,6 @@ export type TProject = {
   description: string;
   links: TLink;
   technologies: string[];
-  priority: number;
 };
 
 export type TLink = {
