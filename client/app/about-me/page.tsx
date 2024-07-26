@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: 'About Faisal Ahmed',
 };
 
-export default async function AboutMePage() {
+export default function AboutMePage() {
   return (
     <main className="container my-10">
       <AboutMe />
