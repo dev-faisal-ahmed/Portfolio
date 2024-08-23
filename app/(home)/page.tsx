@@ -44,7 +44,7 @@ export default function HomePage() {
               'rounded-full bg-primary px-6 text-black',
               'mx-auto mt-10 flex w-fit items-center gap-2 py-3 text-sm lg:mx-0 lg:text-base',
             )}
-            href="/assets/Resume-Faisal-Ahmed.pdf"
+            href="/assets/Faisal_Ahmed.pdf"
             download={true}
           >
             Download Resume
