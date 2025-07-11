@@ -43,6 +43,5 @@ export function emailTemplate({ name, email, subject, message }: EmailType) {
     </div>
   </body>
   </html>
-
 `;
 }

@@ -1,11 +1,10 @@
-import type { Metadata } from 'next';
+import './globals.css';
+
+import { Metadata } from 'next';
 import { JetBrains_Mono } from 'next/font/google';
-import { PageTransition } from '@/shared/page-transition';
 import { cn } from '@/lib/utils';
 import { Navbar } from '@/shared/navbar';
 import { Footer } from '@/shared/footer';
-import { StairTransition } from '@/shared/page-transition/stair-transition';
-import './globals.css';
 import { Toaster } from 'sonner';
 
 const font = JetBrains_Mono({
@@ -29,8 +28,7 @@ export default function RootLayout({
       </head>
       <body className={cn(font.className, 'flex min-h-screen flex-col')}>
         <Navbar />
-        <StairTransition />
-        <PageTransition>{children}</PageTransition>
+        {children}
         <Footer />
         <Toaster richColors duration={1500} />
       </body>

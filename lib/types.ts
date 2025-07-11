@@ -18,18 +18,20 @@ export type TEducation = {
 
 // ********** Project ********** \\
 export type TProject = {
-  _id: string;
-  name: string;
+  id: string;
+  title: string;
   coverUrl: string;
   description: string;
+  features: string[];
   links: TLink;
-  technologies: string[];
+  techStack: string[];
 };
 
 export type TLink = {
-  client: string;
-  server: string;
+  client?: string;
+  server?: string;
   live: string;
+  code?: string;
 };
 
 // ********** Experience ********** \\

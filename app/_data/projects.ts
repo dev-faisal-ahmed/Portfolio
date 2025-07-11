@@ -1,91 +1,146 @@
-export const projects = [
+import { TProject } from '@/lib/types';
+
+export const projects: TProject[] = [
   {
-    _id: 'P-1',
-    name: 'Travel Buddy',
-    coverUrl: 'https://i.ibb.co/pPtSHRv/travel-buddy.png',
-    description: `<p>The website is designed to serve as a community-driven platform for sharing and organizing tours. It allows users to create detailed tour itineraries, share their travel plans, and connect with others who are interested in joining their adventures. Whether you are a solo traveler looking for companionship or a seasoned explorer willing to guide others, this platform provides a seamless way to share your travel experiences and build a network of like-minded travelers.</p><h3><strong>Features: </strong></h3><ul><li><p>Users can add trip posts with detailed information, including spot, start date, end date, category, activities, and pictures.</p></li><li><p>All users can view all trip posts, including their own, on the trip page. Trip Details and Requests</p></li><li><p>On the detailed trip post page, users can send join requests and update their own posts.</p></li><li><p>Users can edit their profile and change their password.</p></li><li><p>Users can view, update, and delete all their added trips.</p></li><li><p>Users can see detailed views of join requests for their trips and accept or reject these requests.</p></li><li><p>Users can check the status (accepted or pending) of trips they have requested to join.</p></li><li><p>Home Page Search and Filter.</p></li><li><p>Users can search and filter trips by destination, travel dates, travel type, and keywords in the description.</p></li></ul><p></p>`,
-    links: {
-      client: 'https://github.com/dev-faisal-ahmed/TravelBuddy-Client',
-      server: 'https://github.com/dev-faisal-ahmed/TravelBuddy-Server',
-      live: 'https://travel-buddy-client.vercel.app',
-    },
-    technologies: [
-      'NextJs',
-      'MongoDb',
-      'Mongoose',
-      'React Hook Form',
-      'TailwindCss',
-      'ShadCn-UI',
-      'Zod',
-      'Express Js',
+    id: 'P1',
+    coverUrl: '/images/projects/medipath.png',
+    title: 'Medipath - Clinic Billing & Expense Tracking System',
+    description:
+      'A comprehensive financial management system currently used by two diagnostic centers to manage billing, expenses, commissions, and gain insights through analytics.',
+    features: [
+      'Generate and manage patient bills with detailed breakdowns.',
+      'Add expense categories and monitor clinic expenditures.',
+      'Automatically calculate and track doctor and agent commissions.',
+      'Analyze transactions for revenue and spending insights.',
     ],
+    techStack: [
+      'Next.js',
+      'TypeScript',
+      'Express.js',
+      'Mongoose',
+      'Shadcn-UI',
+      'React Hook Form',
+      'TanStack Query',
+      'TanStack Table',
+    ],
+    links: {
+      live: 'https://medipath-client-beta.vercel.app',
+      client: 'https://github.com/dev-faisal-ahmed/Medipath/tree/master/client',
+      server: 'https://github.com/dev-faisal-ahmed/Medipath/tree/master/server',
+    },
   },
   {
-    _id: 'P-2',
-    name: 'Ray-Shade',
-    coverUrl: 'https://i.ibb.co/X4V27P8/ray-shade.png',
-    description: `<p>This robust admin dashboard is designed specifically for managing eyeglass products. Administrators can effortlessly create, update, delete, and sell eyeglasses. The dashboard features advanced filtering options, allowing products to be sorted and filtered based on various attributes. It also includes a bulk delete function for streamlined management. Ensuring security, the system uses JWT tokens, restricting access to logged-in users only.</p><h3><strong>Features : </strong></h3><ul><li><p>User can create, update, delete and sell product.</p></li><li><p>Product can e filtered using various properties.</p></li><li><p>Bulk delete supported.</p></li><li><p>Users can edit their profile and change their password.</p></li><li><p>To ensure security jwt token has been used.</p></li></ul>`,
+    id: 'P2',
+    coverUrl: '/images/projects/task-flow.png',
+    title: 'Task Flow – Advanced To-Do App with AI & Notifications',
+    description:
+      'A feature-rich task management platform with smart automation, AI assistance, and an intuitive UI built using Next.js and Hasura.',
+    features: [
+      'Integrated user authentication, task creation, and category assignment.',
+      'AI-powered task description generation.',
+      'Automatic email notifications upon task completion.',
+      'Trash folder for deleted tasks with recovery option.',
+    ],
+    techStack: [
+      'Next.js',
+      'TypeScript',
+      'Hasura',
+      'Apollo Client',
+      'PostgreSQL',
+      'Shadcn-UI',
+      'React Hook Form',
+      'NodeMailer',
+    ],
     links: {
+      live: 'https://ost-task-flow.vercel.app',
+      code: 'https://github.com/dev-faisal-ahmed/TaskFlow',
+    },
+  },
+  {
+    id: 'P3',
+    coverUrl: '/images/projects/travel-buddy.png',
+    title: 'Travel Buddy - Tour Sharing & Planning Platform',
+    description:
+      'A community-driven platform that allows users to create, manage, and join trip plans. Built to connect travelers, manage requests, and organize itineraries with search and filter functionality.',
+    features: [
+      'Create and manage tour posts with location, dates, activities, and images.',
+      'Send and manage join requests for tours with approval system.',
+      'Search and filter tours based on destination, date, and category.',
+      'Edit profiles, change passwords, and view tour statuses.',
+    ],
+    techStack: [
+      'Next.js',
+      'MongoDB',
+      'Mongoose',
+      'React Hook Form',
+      'Tailwind CSS',
+      'Shadcn-UI',
+      'Zod',
+      'Express.js',
+    ],
+    links: {
+      live: 'https://travel-buddy-client.vercel.app',
+      client: 'https://github.com/dev-faisal-ahmed/TravelBuddy-Client',
+      server: 'https://github.com/dev-faisal-ahmed/TravelBuddy-Server',
+    },
+  },
+  {
+    id: 'P4',
+    coverUrl: '/images/projects/ray-shade.png',
+    title: 'Ray-Shade - Eyewear Product Management Dashboard',
+    description:
+      'An admin dashboard for managing eyeglass products with CRUD operations, advanced filtering, and authentication via JWT.',
+    features: [
+      'Create, update, delete, and sell eyeglass products.',
+      'Filter products using various attributes.',
+      'Bulk delete supported for faster management.',
+      'JWT-based secure login and user authentication.',
+    ],
+    techStack: [
+      'React.js',
+      'Redux Toolkit',
+      'RTK Query',
+      'Tailwind CSS',
+      'Shadcn-UI',
+      'Express.js',
+      'MongoDB',
+      'Mongoose',
+    ],
+    links: {
+      live: 'https://ray-shade-client.vercel.app/',
       client:
         'https://github.com/dev-faisal-ahmed/ray-shade-beta/tree/master/client',
       server:
         'https://github.com/dev-faisal-ahmed/ray-shade-beta/tree/master/server',
-      live: 'https://ray-shade-client.vercel.app/',
     },
-    technologies: [
-      'ReactJs',
-      'Redux ToolKit',
-      'RTK Query',
-      'TailwindCss',
-      'ShadCn-Ui',
-      'ExpressJs',
-      'MongoDb',
-      'Mongoose',
-    ],
   },
   {
-    _id: 'P-3',
-    name: 'Cash-IO',
-    coverUrl: 'https://i.ibb.co/QDh5fC2/cash-io.png',
-    description: `<p>This application is a powerful tool for tracking and managing your financial data. You can easily record your expenses, earnings, and borrowings, and view them in different categories and time periods. You can also create multiple wallets to separate your personal and business finances, or to share them with your family and friends. This application helps you analyze your transactions and make smart decisions for your financial future.</p><h3><strong>Features:</strong></h3><ul><li><p><strong>Expense and Revenue Tracking:</strong> Users can log and categorize their daily expenses and revenue sources.</p></li><li><p><strong>Summary Reports:</strong> Generate detailed reports on categorized expenses, monthly, daily, and yearly spending.</p></li><li><p><strong>Budgeting and Goal Setting:</strong> Set financial goals and create budgets to stay on track.</p></li><li><p><strong>Wallet System:</strong> Manage multiple wallets for different purposes and mark specific wallets as savings, restricting spending from those.</p></li></ul>`,
-    links: {
-      client: 'https://github.com/dev-faisal-ahmed/Cash-IO',
-      server:
-        'https://github.com/dev-faisal-ahmed/Cash-IO/tree/master/app/api/(server)',
-      live: 'https://cash-io.vercel.app/',
-    },
-    technologies: [
-      'Next Js',
-      'Next Auth',
-      'MongoDb',
+    id: 'P5',
+    coverUrl: '/images/projects/cash-io.png',
+    title: 'Cash-IO - Personal Finance Tracker with Wallet System',
+    description:
+      'A comprehensive application to manage personal or business finances with transaction tracking, budgeting, and goal setting.',
+    features: [
+      'Track and categorize income and expenses across wallets.',
+      'Generate summary reports (monthly, yearly, etc.).',
+      'Set budgets and financial goals with progress tracking.',
+      'Support for multiple wallets, including savings mode.',
+    ],
+    techStack: [
+      'Next.js',
+      'NextAuth',
+      'MongoDB',
       'TypeScript',
       'Redux Toolkit',
       'RTK Query',
-      'TailwnindCss',
-      'ShadCn-Ui',
+      'Tailwind CSS',
+      'Shadcn-UI',
     ],
-  },
-  {
-    _id: 'P-4',
-    name: 'People Sync',
-    coverUrl: 'https://i.ibb.co/LPSf4kc/people-synch.png',
-    description: `<p>This efficient recruiting tracking app streamlines the hiring process for administrators. Admins can create job postings and track applications from candidates who can apply without creating an account. The app allows admins to review applications, update candidate statuses, and manage the entire recruitment process seamlessly.</p><h3><strong>Features : </strong></h3><ul><li><p>Admin can create job postings.</p></li><li><p>Candidates can apply without creating any account.</p></li><li><p>Admin can review and manage applications.</p></li><li><p>Status updates for candidate applications.</p></li><li><p>Streamlined recruitment tracking and management.</p></li></ul>`,
     links: {
-      client:
-        'https://github.com/dev-faisal-ahmed/PeopleSync/tree/master/client',
+      live: 'https://cash-io.vercel.app/',
+      client: 'https://github.com/dev-faisal-ahmed/Cash-IO',
       server:
-        'https://github.com/dev-faisal-ahmed/PeopleSync/tree/master/server',
-      live: 'https://people-sync.vercel.app/',
+        'https://github.com/dev-faisal-ahmed/Cash-IO/tree/master/app/api/(server)',
     },
-    technologies: [
-      'ReactJs',
-      'Redux ToolKit',
-      'RTK Query',
-      'TailwindCss',
-      'ShadCn-Ui',
-      'ExpressJs',
-      'MongoDb',
-      'Mongoose',
-    ],
   },
 ];
