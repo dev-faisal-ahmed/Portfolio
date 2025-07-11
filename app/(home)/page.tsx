@@ -9,6 +9,7 @@ import { ProjectCard } from '@/shared/project-card';
 import { Button } from '@/components/ui/button';
 import { projects } from '../_data';
 import { Metadata } from 'next';
+import { resumeLink } from '../_data/resume-link';
 
 export const metadata: Metadata = {
   title: 'Faisal Ahmed',
@@ -44,8 +45,8 @@ export default function HomePage() {
               'rounded-full bg-primary px-6 text-black',
               'mx-auto mt-10 flex w-fit items-center gap-2 py-3 text-sm lg:mx-0 lg:text-base',
             )}
-            href="/assets/Faisal_Ahmed.pdf"
-            download={true}
+            href={resumeLink}
+            target="_blank"
           >
             Download Resume
             <ArrowBigDownDashIcon />
@@ -68,9 +69,9 @@ export default function HomePage() {
         </Link>
       </div>
 
-      <div className="mt-6 grid gap-12 md:grid-cols-2">
-        {projects.map((project) => (
-          <ProjectCard key={project.name} {...project} />
+      <div className="mt-6 flex flex-col gap-12">
+        {projects.slice(0, 2).map((project) => (
+          <ProjectCard key={project.title} {...project} />
         ))}
       </div>
     </main>

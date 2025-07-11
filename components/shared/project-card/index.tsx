@@ -7,12 +7,12 @@ export function ProjectCard(project: TProject) {
   const { id, coverUrl, techStack, title, description, links } = project;
 
   return (
-    <div className="cursor-pointer rounded-2xl bg-neutral-800/40 p-6 ring-1 ring-white/50 transition duration-300 hover:-translate-y-1">
+    <div className="cursor-pointer rounded-2xl bg-neutral-800/40 p-6 ring-1 ring-white/50 transition duration-300 hover:ring-primary">
       <Image
         className="w-full rounded-xl"
         src={coverUrl}
-        width={700}
-        height={700}
+        width={1600}
+        height={900}
         alt="Project_Cover"
       />
       <div className="mt-6 flex flex-wrap gap-3">
@@ -25,7 +25,7 @@ export function ProjectCard(project: TProject) {
           </span>
         ))}
       </div>
-      <h3 className="mt-8 text-2xl font-bold uppercase tracking-wider">
+      <h3 className="mt-8 text-justify text-xl font-bold uppercase tracking-wider">
         {title}
       </h3>
 

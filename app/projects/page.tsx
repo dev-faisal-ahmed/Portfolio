@@ -11,9 +11,9 @@ export default function ProjectsPage() {
   return (
     <main className="container my-12">
       <Heading>My Works.</Heading>
-      <div className="mt-6 grid gap-12 md:grid-cols-2">
+      <div className="mt-6 flex flex-col gap-12">
         {projects.map((project) => (
-          <ProjectCard key={project.name} {...project} />
+          <ProjectCard key={project.title} {...project} />
         ))}
       </div>
     </main>
